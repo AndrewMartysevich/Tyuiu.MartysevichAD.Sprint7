@@ -116,7 +116,7 @@ namespace Project.V4
                 }
             }
 
-            
+
             buttonOut_MAD.Enabled = true;
         }
 
