@@ -156,6 +156,7 @@ namespace Project.V4
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "БИБЛИОТЕКА";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelCentre_MAD.ResumeLayout(false);

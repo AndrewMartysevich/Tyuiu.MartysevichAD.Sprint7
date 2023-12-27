@@ -13,13 +13,13 @@ using Lib;
 
 namespace Project.V4
 {
-    
+
     public partial class FormBooks : Form
     {
         static int rows;
         public string path;
-        static int cost;
         DataService ds = new DataService();
+        public int cost;
         static int columns;
         static string openFilePath;
         public static string[,] LoadFromFileData(string filePath)
@@ -45,7 +45,7 @@ namespace Project.V4
                 }
             }
             return arrayValues;
-        }   
+        }
         public FormBooks()
         {
             InitializeComponent();
@@ -93,7 +93,7 @@ namespace Project.V4
         {
             openFileDialog_MAD.ShowDialog();
             openFilePath = openFileDialog_MAD.FileName;
-            path = openFileDialog_MAD.FileName; 
+            path = openFileDialog_MAD.FileName;
 
             string[,] arrayValues = new string[rows, columns];
 
@@ -101,7 +101,7 @@ namespace Project.V4
 
             dataGridView_MAD.ColumnCount = columns;
             dataGridView_MAD.RowCount = rows;
-            
+
 
             for (int i = 0; i < columns; i++)
             {
@@ -116,17 +116,17 @@ namespace Project.V4
                 }
             }
 
-           // arrayValues = ds.GetMatrix(openFilePath);
+            
             buttonOut_MAD.Enabled = true;
         }
 
         private void FormBooks_Load(object sender, EventArgs e)
         {
-            dataGridView_MAD.ColumnCount = 50;            
-            dataGridView_MAD.RowCount = 50;                     
+            dataGridView_MAD.ColumnCount = 50;
+            dataGridView_MAD.RowCount = 50;
             for (int i = 0; i < 50; i++)
             {
-                dataGridView_MAD.Columns[i].Width = 25;               
+                dataGridView_MAD.Columns[i].Width = 25;
             }
         }
 
@@ -138,32 +138,32 @@ namespace Project.V4
 
         private void textBoxSearcch_MAD_TextChanged(object sender, EventArgs e)
         {
-            
-                try
-                {
-                    string searchValue = textBoxSearcch_MAD.Text.ToLower();
 
-                    foreach (DataGridViewRow row in dataGridView_MAD.Rows)
+            try
+            {
+                string searchValue = textBoxSearcch_MAD.Text.ToLower();
+
+                foreach (DataGridViewRow row in dataGridView_MAD.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
                     {
-                        foreach (DataGridViewCell cell in row.Cells)
+                        if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchValue))
                         {
-                            if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchValue))
-                            {
-                                cell.Style.BackColor = Color.Yellow; // цвет  найденной ячейки
-                            }
-                            else
-                            {
-                                cell.Style.BackColor = Color.White; // цвета по умолчанию
-                            }
+                            cell.Style.BackColor = Color.Green; 
+                        }
+                        else
+                        {
+                            cell.Style.BackColor = Color.White; 
                         }
                     }
                 }
+            }
 
-                catch
-                {
-                    MessageBox.Show("Что-то пошло не так, попробуйте снова", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так, попробуйте снова", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void buttonCancel_MAD_Click(object sender, EventArgs e)
@@ -177,7 +177,7 @@ namespace Project.V4
                 }
             }
         }
-   
+
         private void buttonSum_MAD_Click(object sender, EventArgs e)
         {
             textBoxSum_MAD.Text = Convert.ToString(ds.BookCount(path, cost));
@@ -190,13 +190,51 @@ namespace Project.V4
 
         private void buttonMax_MAD_Click(object sender, EventArgs e)
         {
-            
-            
+
         }
 
         private void buttonMin_MAD_Click(object sender, EventArgs e)
         {
-            
+
         }
+
+        private void buttonInf_MAD_MouseEnter(object sender, EventArgs e)
+        {
+
+            toolTip_MAD.ToolTipTitle = "Как пользоваться";
+        }
+
+        private void buttonOut_MAD_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_MAD.ToolTipTitle = "Сохранить";
+        }
+
+        private void buttonIn_MAD_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_MAD.ToolTipTitle = "Открыть файл";
+        }
+
+        private void toolTip_MAD_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void buttonExit_MAD_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            dataGridView_MAD.Sort(dataGridView_MAD.Columns[2], ListSortDirection.Descending);
+        }
+
+        private void buttonCan_MAD_Click(object sender, EventArgs e)
+        {
+            dataGridView_MAD.Sort(dataGridView_MAD.Columns[3], ListSortDirection.Descending);
+        }
+            
+        
     }
 }

@@ -63,5 +63,10 @@ namespace Project.V4
         {
             buttonExit_MAD.BackColor = Color.White;
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

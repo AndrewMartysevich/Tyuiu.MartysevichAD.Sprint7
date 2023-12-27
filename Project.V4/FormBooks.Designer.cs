@@ -44,6 +44,8 @@ namespace Project.V4
             this.textBoxSea_MAD = new System.Windows.Forms.TextBox();
             this.buttonCount_MAD = new System.Windows.Forms.Button();
             this.textBoxSum_MAD = new System.Windows.Forms.TextBox();
+            this.buttonExit_MAD = new System.Windows.Forms.Button();
+            this.buttonSort_MAD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MAD)).BeginInit();
             this.groupBoxSearch_MAD.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +60,7 @@ namespace Project.V4
             this.buttonIn_MAD.TabIndex = 0;
             this.buttonIn_MAD.UseVisualStyleBackColor = false;
             this.buttonIn_MAD.Click += new System.EventHandler(this.buttonIn_MAD_Click);
+            this.buttonIn_MAD.MouseEnter += new System.EventHandler(this.buttonIn_MAD_MouseEnter);
             // 
             // buttonOut_MAD
             // 
@@ -70,6 +73,14 @@ namespace Project.V4
             this.buttonOut_MAD.TabIndex = 1;
             this.buttonOut_MAD.UseVisualStyleBackColor = false;
             this.buttonOut_MAD.Click += new System.EventHandler(this.buttonOut_MAD_Click);
+            this.buttonOut_MAD.MouseEnter += new System.EventHandler(this.buttonOut_MAD_MouseEnter);
+            // 
+            // toolTip_MAD
+            // 
+            this.toolTip_MAD.IsBalloon = true;
+            this.toolTip_MAD.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip_MAD.ToolTipTitle = "Подсказка";
+            this.toolTip_MAD.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip_MAD_Popup);
             // 
             // openFileDialog_MAD
             // 
@@ -89,12 +100,13 @@ namespace Project.V4
             // 
             this.buttonInf_MAD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.buttonInf_MAD.Image = ((System.Drawing.Image)(resources.GetObject("buttonInf_MAD.Image")));
-            this.buttonInf_MAD.Location = new System.Drawing.Point(813, 16);
+            this.buttonInf_MAD.Location = new System.Drawing.Point(798, 16);
             this.buttonInf_MAD.Name = "buttonInf_MAD";
-            this.buttonInf_MAD.Size = new System.Drawing.Size(94, 76);
+            this.buttonInf_MAD.Size = new System.Drawing.Size(109, 76);
             this.buttonInf_MAD.TabIndex = 3;
             this.buttonInf_MAD.UseVisualStyleBackColor = false;
             this.buttonInf_MAD.Click += new System.EventHandler(this.buttonInf_MAD_Click);
+            this.buttonInf_MAD.MouseEnter += new System.EventHandler(this.buttonInf_MAD_MouseEnter);
             // 
             // groupBoxSearch_MAD
             // 
@@ -153,18 +165,42 @@ namespace Project.V4
             // textBoxSum_MAD
             // 
             this.textBoxSum_MAD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxSum_MAD.Location = new System.Drawing.Point(533, 47);
+            this.textBoxSum_MAD.Location = new System.Drawing.Point(559, 41);
             this.textBoxSum_MAD.Name = "textBoxSum_MAD";
             this.textBoxSum_MAD.ReadOnly = true;
             this.textBoxSum_MAD.Size = new System.Drawing.Size(100, 22);
             this.textBoxSum_MAD.TabIndex = 6;
             this.textBoxSum_MAD.TextChanged += new System.EventHandler(this.textBoxSum_MAD_TextChanged);
             // 
+            // buttonExit_MAD
+            // 
+            this.buttonExit_MAD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.buttonExit_MAD.Location = new System.Drawing.Point(923, 16);
+            this.buttonExit_MAD.Name = "buttonExit_MAD";
+            this.buttonExit_MAD.Size = new System.Drawing.Size(108, 76);
+            this.buttonExit_MAD.TabIndex = 7;
+            this.buttonExit_MAD.Text = "Вернуться";
+            this.buttonExit_MAD.UseVisualStyleBackColor = false;
+            this.buttonExit_MAD.Click += new System.EventHandler(this.buttonExit_MAD_Click);
+            // 
+            // buttonSort_MAD
+            // 
+            this.buttonSort_MAD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.buttonSort_MAD.Location = new System.Drawing.Point(922, 110);
+            this.buttonSort_MAD.Name = "buttonSort_MAD";
+            this.buttonSort_MAD.Size = new System.Drawing.Size(118, 51);
+            this.buttonSort_MAD.TabIndex = 8;
+            this.buttonSort_MAD.Text = "Сортировать по году";
+            this.buttonSort_MAD.UseVisualStyleBackColor = false;
+            this.buttonSort_MAD.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 513);
+            this.ClientSize = new System.Drawing.Size(1043, 513);
+            this.Controls.Add(this.buttonSort_MAD);
+            this.Controls.Add(this.buttonExit_MAD);
             this.Controls.Add(this.textBoxSum_MAD);
             this.Controls.Add(this.buttonCount_MAD);
             this.Controls.Add(this.groupBoxSearch_MAD);
@@ -173,6 +209,7 @@ namespace Project.V4
             this.Controls.Add(this.buttonOut_MAD);
             this.Controls.Add(this.buttonIn_MAD);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "FormBooks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Книги";
@@ -200,5 +237,7 @@ namespace Project.V4
         private System.Windows.Forms.Button buttonCancel_MAD;
         private System.Windows.Forms.Button buttonCount_MAD;
         private System.Windows.Forms.TextBox textBoxSum_MAD;
+        private System.Windows.Forms.Button buttonExit_MAD;
+        private System.Windows.Forms.Button buttonSort_MAD;
     }
 }
